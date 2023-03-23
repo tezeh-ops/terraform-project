@@ -35,7 +35,7 @@ resource "aws_s3_bucket" "bootcamp30-23-samueltech" {
 
 resource "aws_dynamodb_table" "dynamodb-table" {
   hash_key = "LockID"
-  name     = "iac-terraform-states-lock"
+  name     = "iac-terraform-states-lock"    # YOUr dynamodb tableName
   write_capacity = 5
   read_capacity = 5
   attribute {
@@ -46,10 +46,10 @@ resource "aws_dynamodb_table" "dynamodb-table" {
                                                     
 terraform {               #  Configure Terraform to point to this backend        
   backend "s3" {
-    bucket         = "bootcamp30-23-samueltech"
+    bucket         = "bootcamp30-23-samueltech"    # the name of your bucket
     key            = "terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "iac-terraform-states-lock"
+    region         = "us-east-1"                 
+    dynamodb_table = "iac-terraform-states-lock"   # dynamodb table name
   }
 }
 
